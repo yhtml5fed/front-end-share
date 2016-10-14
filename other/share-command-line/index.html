@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title>Node</title>
+		<link rel="stylesheet" href="css/normalize.css">
+		<link rel="stylesheet" href="css/style.css">
+		<link rel="stylesheet" href="css/app.css">
+
+	</head>
+
+	<body>
+
+		<nav>
+			<div class="nav1"></div>
+		</nav>
+
+		<div class="hero-image-container">
+			<div class="window-background"></div>
+			<div class="moon"></div>
+			<img class="hero-image" src="img/animation_101.svg" alt="Daily emails animation">
+			<div class="screen-container"></div>
+			<div class="notification"></div>
+		</div>
+
+		<div class="container js-open1">
+			<div class="header">
+				<div class="dot red js-close"></div>
+				<div class="dot yellow"></div>
+				<div class="dot green"></div>
+			</div>
+			<div class="panel">
+				<div class="action">
+					<div class="command"><span class="symbol">$</span>
+						<input type="text" placeholder="Welcome to NodeJS" autofocus="" class="in" />
+					</div>
+					<div class="output"></div>
+				</div>
+			</div>
+		</div>
+
+		<div class="container js-open2">
+			<div class="header">
+				<div class="dot red js-close"></div>
+				<div class="dot yellow"></div>
+				<div class="dot green"></div>
+			</div>
+			<div class="panel2 bgfff">
+				<h3>概念：</h3>
+				<p>OSX 采用的Unix文件系统，所有文件都挂在跟目录 / 下面，</p>
+				<p>根目录位置是 / 核心 Mach_kernel 就在这里， </p>
+				<p>驱动所在位置 /Systme/Library/Extensions </p>
+				<p>用户文件夹位置 /User/用户名 </p>
+				<p>桌面的位置 /User/用户名/Desktop </p>
+				<h3>例子：</h3>
+				<ul>
+					<li>列出文件：ls 参数 目录名</li>
+					<li>转换目录：cd </li>
+					<li>建立新目录：mkdir</li>
+					<li>删除文件：rm 参数 文件 </li>
+					<li>移动文件：mv 文件 </li>
+				</ul>
+			</div>
+		</div>
+
+		<script src="js/jquery-2.2.0.min.js"></script>
+		<script src="js/index.js"></script>
+		<script type="text/javascript">
+			$(function() {
+				$('.screen-container').click(function() {
+					$('.js-open1').fadeIn()
+				})
+				$('.js-close').click(function() {
+					$('.js-open1,.js-open2').fadeOut()
+				})
+				$('.nav1').click(function() {
+					$('.js-open2').fadeIn()
+				})
+			})
+		</script>
+	</body>
+
+</html>
