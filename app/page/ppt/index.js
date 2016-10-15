@@ -2,6 +2,7 @@
  * @require fn.js
  */
 /***************  do  ***************/
+'use strict';
 $(function () {
   $('#list li').hover(function(){
       $(this).css({'box-shadow':'5px 5px 10px #555','opacity':'1'});
@@ -56,5 +57,4 @@ $(function () {
             target.addClass('cur-item');
         });
     });
-
 });

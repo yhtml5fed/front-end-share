@@ -15,15 +15,17 @@
  *
  *====================================================================*/
 var yhtml5Data = {
+    author: '张大漾丨王晨翱',
     version: 1.2,
     name: "yhtml5",
     viewType: "page",
     domain: ".",
     path: "/static",
     framework: "jquery",
-    isStart: false
+    isStart: true,
+    isAllInOne:true
 }
-console.log('Powerd by YHTML5-Seed, enjoying yourself...')
+console.log('This project is based on YHTML5-Seed and developed by ' + yhtml5Data.author)
 /************************* Project Setting *****************************/
 fis.set('project.md5Length', 7);
 fis.set('project.md5Connector ', '.');
@@ -31,7 +33,7 @@ fis.set('project.name', 'yhtml5');
 fis.set('project.static', '/static');
 fis.set('project.ignore', ['*.test.*', '*.psd', '.git/**', '/**/demo.*']);
 fis.set('project.files', [
-    'fis-conf.js', 'index.html', '/htmlElement.html', 'map.json',
+    './fis-conf.js', './index.html', './map.json',
     '/components/**', '/server/*', '/' + yhtml5Data.viewType + '/**',
     '/bower_components/bootstrap/dist/**/bootstrap.min.{css,js}',
     '/bower_components/jquery/dist/jquery.min.js',
@@ -50,6 +52,9 @@ if (yhtml5Data.viewType === 'page') {
     fis.match('/page/(*.html)', {
         release: '/$1'
     })
+    fis.match('/pkg/page/(**)', {
+        release: '${project.static}/$1'
+    });
     console.log('PG Mode...')
 }
 if (yhtml5Data.isStart === true) {
@@ -63,9 +68,6 @@ fis.match('/**/(*.design.*)', {
 });
 fis.match('/{map.json,fis-conf.*}', {
     release: '/config/$0'
-});
-fis.match('/pkg/page/(**)', {
-    release: '${project.static}/$1'
 });
 fis.match('/{view,components,bower_components,page}/**/(*.{png,gif,jpg,jpeg,svg})', {
     release: '${project.static}/img/$1'
@@ -84,7 +86,7 @@ fis.match('::package', {
     })
 });
 /*** public js ***/
-fis.match('/{server,components/jquery,bower_components}/{*,**/*}.js', {
+fis.match('/{server,components,bower_components}/{*,**/*}.js', {
     packTo: '${project.static}/yhtml5.js'
 });
 fis.match('/server/author.js', {
@@ -98,6 +100,9 @@ fis.match('/bower_components/bootstrap/dist/js/*', {
 });
 fis.match('/bower_components/fullpage.js/dist/jquery.fullpage.min.js', {
     packOrder: -295
+});
+fis.match('/bower_components/echarts/dist/echarts.min.js', {
+    packOrder: -89
 });
 fis.match('/server/console.js', {
     packOrder: 2
@@ -114,7 +119,7 @@ fis.match('/bower_components/bootstrap/dist/css/bootstrap.min.css', {
     packOrder: -299
 });
 fis.match('/bower_components/fullpage.js/dist/jquery.fullpage.min.css', {
-    packOrder: -89
+    packOrder: -199
 });
 fis.match('/components/iconfont/iconfont.css', {
     packOrder: -99
@@ -125,7 +130,7 @@ fis.media('pro')
     .match('/{pkg/page/**,static/**,{components,bower_components,page,view}/**/*.{png,gif,jpg,jpeg,eot,ttf,woff,woff2,svg}}', {
         useHash: true,
         domain: '.'
-    }, console.log("building pro..."))
+    })
     .match('/{index,{view,page,components}/{*,**/*}}.html', {
         optimizer: function (content) {
             return content.replace(/<!--([\s\S]*?)-->/g, '');

@@ -1,6 +1,5 @@
 /*
  * @require ../../server/author.js
- * @require ../../bower_components/echarts/dist/echarts.min.js
  *
  */
 /***************  fn  ***************/
