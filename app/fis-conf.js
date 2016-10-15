@@ -1,150 +1,170 @@
+/*=====================================================================
+ * 配置说明:
+ *
+ * 监听文件: 选择你需要监听的文件, 已经有了对应的demo写法(Glob/正则)
+ * 目录规范: 提供默认demo写法
+ * 配置data:
+ *    name  --项目名
+ *    path  --静态资源目录
+ *    viewType  view--单页应用, page--多页应用
+ *    framework  可配置项 jquery,angular,vue,(react)
+ * 依赖关系:
+ *    基于整个系统,自己的开发模块,定义依赖关系即可
+ *    基于整个系统,属于第三包的,请指定打包顺序
+ *    基于单个页面,定义依赖关系,通过allInOne打包
+ *
+ *====================================================================*/
+var yhtml5Data = {
+    version: 1.2,
+    name: "yhtml5",
+    viewType: "page",
+    domain: ".",
+    path: "/static",
+    framework: "jquery",
+    isStart: false
+}
+console.log('Powerd by YHTML5-Seed, enjoying yourself...')
 /************************* Project Setting *****************************/
 fis.set('project.md5Length', 7);
 fis.set('project.md5Connector ', '.');
 fis.set('project.name', 'yhtml5');
 fis.set('project.static', '/static');
-fis.set('project.ignore', ['*.test.*', '*.psd', '.git/**', '/**/demo.*','/dist/**']);
+fis.set('project.ignore', ['*.test.*', '*.psd', '.git/**', '/**/demo.*']);
 fis.set('project.files', [
-    'fis-conf.js', 'index.html','/htmlElement.html', 'map.json',
-    '/components/**', '/server/*', '/view/**',
+    'fis-conf.js', 'index.html', '/htmlElement.html', 'map.json',
+    '/components/**', '/server/*', '/' + yhtml5Data.viewType + '/**',
     '/bower_components/bootstrap/dist/**/bootstrap.min.{css,js}',
     '/bower_components/jquery/dist/jquery.min.js',
     '/bower_components/fullpage.js/dist/jquery.fullpage.min.{css,js}',
     '/bower_components/echarts/dist/echarts.min.js'
 ]);
 
-
-/************************* 目录规范 *****************************/
-fis.match('/page/(*.html)', {
-    release: '/$1'
-});
+/************************* Directory Standard *****************************/
 fis.match('/bower_components/(**)', {
     release: '/vendor/$1'
 });
 fis.match('/components/**', {
     release: '/vendor/$0'
 });
+if (yhtml5Data.viewType === 'page') {
+    fis.match('/page/(*.html)', {
+        release: '/$1'
+    })
+    console.log('PG Mode...')
+}
+if (yhtml5Data.isStart === true) {
+    fis.match('/page/start/(index.html)', {
+        release: '/$1'
+    })
+    console.log('release start.html...')
+}
 fis.match('/**/(*.design.*)', {
     release: '/vendor/design/$1'
 });
-
 fis.match('/{map.json,fis-conf.*}', {
     release: '/config/$0'
+});
+fis.match('/pkg/page/(**)', {
+    release: '${project.static}/$1'
 });
 fis.match('/{view,components,bower_components,page}/**/(*.{png,gif,jpg,jpeg,svg})', {
     release: '${project.static}/img/$1'
 });
 fis.match('/**/({glyphicons-halflings-regular.*,iconfont.{eot, svg, ttf, woff}})', {
     release: '${project.static}/iconfont/$1',
-    url: '/iconfont/$1'
+    url: '/iconfont/$1',
+    domain: '.'
 });
-
-
-/************************* 打包规范 *****************************/
+/************************* Package Standard *****************************/
 fis.match('::package', {
     postpackager: fis.plugin('loader', {
         resourceType: 'commonJs',
-        useInlineMap: true
+        useInlineMap: true,
+        allInOne: true,
     })
 });
-/*** public resourse ***/
-fis.match('/bower_components/{bootstrap,jquery,fullpage.js,echarts}/**/*.min.js', {
-    packTo: '${project.static}/yhtml5.js',
-});
-fis.match('/bower_components/jquery/dist/jquery.min.js', {
-    packOrder: -99
-});
-fis.match('/bower_components/bootstrap/dist/js/bootstrap.min.js', {
-    packOrder: -97
-});
-fis.match('/bower_components/fullpage.js/dist/jquery.fullpage.min.js', {
-    packOrder: -95
-});
-fis.match('/bower_components/echarts/dist/echarts.min.js', {
-    packOrder: -89
-});
-fis.match('/bower_components/{bootstrap,fullpage.js}/**/*.min.css', {
-    packTo: '${project.static}/yhtml5.css'
-});
-fis.match('/bower_components/bootstrap/dist/css/bootstrap.min.css', {
-    packOrder: -95
-});
-fis.match('/bower_components/fullpage.js/dist/jquery.fullpage.min.css', {
-    packOrder: -89
-});
-/*** custom resourse ***/
-fis.match('/{server, components/**}/*.js', {
-    packTo: '${project.static}/index.js'
+/*** public js ***/
+fis.match('/{server,components/jquery,bower_components}/{*,**/*}.js', {
+    packTo: '${project.static}/yhtml5.js'
 });
 fis.match('/server/author.js', {
-    packOrder: -99
+    packOrder: -999
+});
+fis.match('/bower_components/jquery/dist/*', {
+    packOrder: -299
+});
+fis.match('/bower_components/bootstrap/dist/js/*', {
+    packOrder: -297
+});
+fis.match('/bower_components/fullpage.js/dist/jquery.fullpage.min.js', {
+    packOrder: -295
 });
 fis.match('/server/console.js', {
     packOrder: 2
 });
-fis.match('/{server,view/**,components/**}/*.css', {
-    packTo: '${project.static}/index.css'
+
+/*** public css ***/
+fis.match('/{server,components,bower_components}/{*,**/*}.css', {
+    packTo: '${project.static}/yhtml5.css'
 });
 fis.match('/server/author.css', {
+    packOrder: -999
+});
+fis.match('/bower_components/bootstrap/dist/css/bootstrap.min.css', {
+    packOrder: -299
+});
+fis.match('/bower_components/fullpage.js/dist/jquery.fullpage.min.css', {
     packOrder: -89
 });
 fis.match('/components/iconfont/iconfont.css', {
-    packOrder: -78
+    packOrder: -99
 });
-
-/************************* Pro规范 *****************************/
+/************************* Pro Standard *****************************/
 
 fis.media('pro')
-    .match('/{static/**,{components,bower_components,view}/**/*.{png,gif,jpg,jpeg,eot,ttf,woff,woff2,svg}}', {
+    .match('/{pkg/page/**,static/**,{components,bower_components,page,view}/**/*.{png,gif,jpg,jpeg,eot,ttf,woff,woff2,svg}}', {
         useHash: true,
         domain: '.'
-    })
-    //html 去除注释
-    .match('{/index.html,/view/*.html}', {
+    }, console.log("building pro..."))
+    .match('/{index,{view,page,components}/{*,**/*}}.html', {
         optimizer: function (content) {
             return content.replace(/<!--([\s\S]*?)-->/g, '');
         }
     })
-    //css 自动补充兼容性 https://github.com/ai/browserslist#queries
-    .match('/components/**/*.css', {
+    .match('/{' + yhtml5Data.viewType + ',components}/{*,**/*}.css', {
         preprocessor: fis.plugin('cssprefixer', {
             "browsers": ["FireFox > 1", "Chrome > 1", "ie >= 8"],
             "cascade": true
         })
     })
-    .match('/{{components,view}/**/*.{html,css},index.html}', {
+    .match('/{' + yhtml5Data.viewType + ',components}/{*,**/*}.html', {
         optimizer: fis.plugin('htmlminify', {
             removeComments: true,
             collapseWhitespace: true,
-            minifyJS: true,
-            minifyCSS: true
+        })
+    })
+    .match('/{' + yhtml5Data.viewType + ',components}/{*,**/*}.css', {
+        optimizer: fis.plugin('clean-css', {
+            // target:false
+            // keepSpecialComments:0
+            // rebase:false
+            // keepBreaks: true,
+            // compatibility:'ie7'
         })
     })
     .match('/{components,view}/**/init.js', {
         optimizer: fis.plugin('htmlminify', {
             removeComments: true,
             collapseWhitespace: true,
-            minifyJS: true
+            minifyJS: true,
         })
     })
+
 // 自动雪碧图
 // .match('::package', {
 //     packager: fis.plugin('map'),
 //     spriter: fis.plugin('csssprites', {
 //         layout: 'matrix',
 //         margin: '15'
-//     })
-// })
-// .match('*.css', {
-//     optimizer: fis.plugin('clean-css', {
-//         'keepBreaks': false,
-//         useSprite: true
-//     })
-// })
-// .match('*.js', {
-//     optimizer: fis.plugin('uglify-js', {
-//         mangle: {
-//             expect: ['require', 'define', 'some string']
-//         }
 //     })
 // })

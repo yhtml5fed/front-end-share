@@ -1,8 +1,8 @@
 {
-  "name": "yhtml5-seed",
+  "name": "front-end-share",
   "version": "1.0",
   "description": "The web's scaffolding tool for modern webapps",
-  "repository": "https://github.com/yhtml5/YHTML5-Seed",
+  "repository": "https://github.com/yhtml5fed/front-end-share",
   "license": "MIT",
   "devDependencies": {
     "bower": "^1.3.1",
