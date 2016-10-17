@@ -1,0 +1,255 @@
+{
+    "res": {
+        "fis-conf.js": {
+            "uri": "/config/fis-conf.js",
+            "type": "js"
+        },
+        "components/css/animation.css": {
+            "uri": "/vendor/components/css/animation.css",
+            "type": "css",
+            "deps": [
+                "components/css/bootstrap.base.css",
+                "components/css/bootstrap.component.css"
+            ],
+            "pkg": "p0"
+        },
+        "components/css/base.css": {
+            "uri": "/vendor/components/css/base.css",
+            "type": "css",
+            "deps": [
+                "components/css/animation.css",
+                "components/css/box.css",
+                "components/css/custom.css"
+            ],
+            "pkg": "p0"
+        },
+        "components/css/bootstrap.base.css": {
+            "uri": "/vendor/components/css/bootstrap.base.css",
+            "type": "css",
+            "deps": [
+                "components/css/bootstrap.component.css"
+            ],
+            "pkg": "p0"
+        },
+        "components/css/bootstrap.component.css": {
+            "uri": "/vendor/components/css/bootstrap.component.css",
+            "type": "css",
+            "deps": [
+                "server/author.css"
+            ],
+            "pkg": "p0"
+        },
+        "components/css/box.css": {
+            "uri": "/vendor/components/css/box.css",
+            "type": "css",
+            "deps": [
+                "components/css/animation.css",
+                "components/css/bootstrap.base.css",
+                "components/css/bootstrap.component.css",
+                "components/css/custom.css"
+            ],
+            "pkg": "p0"
+        },
+        "components/css/custom.css": {
+            "uri": "/vendor/components/css/custom.css",
+            "type": "css",
+            "deps": [
+                "components/css/animation.css",
+                "components/css/bootstrap.base.css",
+                "components/css/bootstrap.component.css"
+            ],
+            "pkg": "p0"
+        },
+        "components/css/main.css": {
+            "uri": "/vendor/components/css/main.css",
+            "type": "css",
+            "pkg": "p0"
+        },
+        "components/iconfont/iconfont.css": {
+            "uri": "/vendor/components/iconfont/iconfont.css",
+            "type": "css",
+            "pkg": "p0"
+        },
+        "server/author.css": {
+            "uri": "/server/author.css",
+            "type": "css",
+            "pkg": "p0"
+        },
+        "server/author.js": {
+            "uri": "/server/author.js",
+            "type": "js",
+            "pkg": "p1"
+        },
+        "server/console.js": {
+            "uri": "/server/console.js",
+            "type": "js",
+            "deps": [
+                "server/author.js"
+            ],
+            "pkg": "p1"
+        },
+        "page/echarts/index.js": {
+            "uri": "/page/echarts/index.js",
+            "type": "js",
+            "deps": [
+                "server/author.js"
+            ],
+            "aioPkg": "pkg/page/ppt.html_aio.js"
+        },
+        "page/htmlElement/index.css": {
+            "uri": "/page/htmlElement/index.css",
+            "type": "css",
+            "aioPkg": "pkg/page/htmlElement.html_aio.css"
+        },
+        "page/htmlElement/index.js": {
+            "uri": "/page/htmlElement/index.js",
+            "type": "js",
+            "aioPkg": "pkg/page/htmlElement.html_aio.js"
+        },
+        "page/index/allInOne.css": {
+            "uri": "/page/index/allInOne.css",
+            "type": "css",
+            "aioPkg": "pkg/page/ppt.html_aio.css"
+        },
+        "page/index/allInOne.js": {
+            "uri": "/page/index/allInOne.js",
+            "type": "js",
+            "aioPkg": "pkg/page/ppt.html_aio.js"
+        },
+        "page/index/index.js": {
+            "uri": "/page/index/index.js",
+            "type": "js",
+            "deps": [
+                "fn.js"
+            ],
+            "aioPkg": "pkg/page/ppt.html_aio.js"
+        },
+        "page/section.theme/index.css": {
+            "uri": "/page/section.theme/index.css",
+            "type": "css",
+            "aioPkg": "pkg/page/ppt.html_aio.css"
+        },
+        "page/start/index.css": {
+            "uri": "/page/start/index.css",
+            "type": "css",
+            "aioPkg": "pkg/page/start/index.html_aio.css"
+        },
+        "page/start/index2.css": {
+            "uri": "/page/start/index2.css",
+            "type": "css",
+            "aioPkg": "pkg/page/start/index.html_aio.css"
+        },
+        "page/start/shape-shifter.js": {
+            "uri": "/page/start/shape-shifter.js",
+            "type": "js",
+            "deps": [
+                "fn.js"
+            ]
+        },
+        "bower_components/bootstrap/dist/css/bootstrap.min.css": {
+            "uri": "/vendor/bootstrap/dist/css/bootstrap.min.css",
+            "type": "css",
+            "extras": {},
+            "pkg": "p0"
+        },
+        "bower_components/bootstrap/dist/js/bootstrap.min.js": {
+            "uri": "/vendor/bootstrap/dist/js/bootstrap.min.js",
+            "type": "js",
+            "pkg": "p1"
+        },
+        "bower_components/jquery/dist/jquery.min.js": {
+            "uri": "/vendor/jquery/dist/jquery.min.js",
+            "type": "js",
+            "pkg": "p1"
+        },
+        "bower_components/fullpage.js/dist/jquery.fullpage.min.css": {
+            "uri": "/vendor/fullpage.js/dist/jquery.fullpage.min.css",
+            "type": "css",
+            "extras": {},
+            "pkg": "p0"
+        },
+        "bower_components/fullpage.js/dist/jquery.fullpage.min.js": {
+            "uri": "/vendor/fullpage.js/dist/jquery.fullpage.min.js",
+            "type": "js",
+            "extras": {},
+            "pkg": "p1"
+        },
+        "bower_components/echarts/dist/echarts.min.js": {
+            "uri": "/vendor/echarts/dist/echarts.min.js",
+            "type": "js",
+            "pkg": "p1"
+        }
+    },
+    "pkg": {
+        "p0": {
+            "uri": "./static/yhtml5.962e02d.css",
+            "type": "css",
+            "has": [
+                "server/author.css",
+                "bower_components/bootstrap/dist/css/bootstrap.min.css",
+                "bower_components/fullpage.js/dist/jquery.fullpage.min.css",
+                "components/iconfont/iconfont.css",
+                "components/css/bootstrap.component.css",
+                "components/css/bootstrap.base.css",
+                "components/css/animation.css",
+                "components/css/custom.css",
+                "components/css/box.css",
+                "components/css/base.css",
+                "components/css/main.css"
+            ]
+        },
+        "p1": {
+            "uri": "./static/yhtml5.9d0efbc.js",
+            "type": "js",
+            "has": [
+                "server/author.js",
+                "bower_components/jquery/dist/jquery.min.js",
+                "bower_components/bootstrap/dist/js/bootstrap.min.js",
+                "bower_components/fullpage.js/dist/jquery.fullpage.min.js",
+                "bower_components/echarts/dist/echarts.min.js",
+                "server/console.js"
+            ]
+        },
+        "pkg/page/htmlElement.html_aio.js": {
+            "type": "js",
+            "uri": "./static/htmlElement.html_aio.b7863df.js",
+            "has": [
+                "page/index/allInOne.js",
+                "page/htmlElement/index.js"
+            ]
+        },
+        "pkg/page/htmlElement.html_aio.css": {
+            "type": "js",
+            "uri": "./static/htmlElement.html_aio.0d2e1d7.css",
+            "has": [
+                "page/index/allInOne.css",
+                "page/htmlElement/index.css"
+            ]
+        },
+        "pkg/page/ppt.html_aio.js": {
+            "type": "js",
+            "uri": "./static/ppt.html_aio.beccec7.js",
+            "has": [
+                "page/echarts/index.js",
+                "page/index/index.js",
+                "page/index/allInOne.js"
+            ]
+        },
+        "pkg/page/ppt.html_aio.css": {
+            "type": "js",
+            "uri": "./static/ppt.html_aio.d1521e3.css",
+            "has": [
+                "page/section.theme/index.css",
+                "page/index/allInOne.css"
+            ]
+        },
+        "pkg/page/start/index.html_aio.css": {
+            "type": "js",
+            "uri": "./static/start/index.html_aio.a93f097.css",
+            "has": [
+                "page/start/index.css",
+                "page/start/index2.css"
+            ]
+        }
+    }
+}
