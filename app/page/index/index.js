@@ -16,11 +16,12 @@ $(function () {
             drawCanvasOne()
         });
         initGithubCharts();
+        // initLinkAndServer();
         performanceAnalysis();
         $('#fullpage').fullpage({
             navigation: true,
             resize: true,
-            sectionsColor: ['#fff', '#f0f4fa', '#fff', '#fff', '#f0f4fa','#f0f4fa', '#f0f4fa', '#fff', '#fff', '#f0f4fa', '#fff', '#f0f4fa', '#f0f4fa'],
+            sectionsColor: ['#fff', '#fff', '#fff', '#f0f4fa', '#fff', '#fff', '#f0f4fa','#f0f4fa', '#f0f4fa', '#fff', '#fff', '#f0f4fa', '#fff', '#f0f4fa', '#f0f4fa'],
             onLeave: function (index, nextIndex, direction) {
                 if ($('.navbar-toggle').attr('aria-expanded') === 'true') {
                     $('.navbar-toggle').trigger('click');

@@ -3,6 +3,75 @@
  *
  */
 /***************  fn  ***************/
+
+function initLinkAndServer() {
+    var t = echarts.init($("#linkAndServer")[0]);
+    t.setOption({
+        title: {
+            text: '连接与服务'
+        },
+        tooltip: {
+            trigger: 'axis'
+        },
+        legend: {
+            x: 'center',
+            data: ['连接', '服务']
+        },
+        radar: [
+            {
+                indicator: [
+                    {text: '视觉界面', max: 100},
+                    {text: 'UI交互', max: 100},
+                    {text: '数据', max: 100},
+                    {text: '业务逻辑', max: 100},
+                    {text: '功能模块', max: 100}
+                ],
+                center: ['30%', '40%'],
+                radius: 80
+            },
+            {
+                indicator: [
+                    {text: '功能点', max: 100},
+                    {text: '交互体验 ', max: 100},
+                    {text: '解决方案', max: 100},
+                    {text: '组件模块', max: 100},
+                    {text: '高质量代码', max: 100}
+                ],
+                center: ['70%', '40%'],
+                radius: 80
+            }
+        ],
+        series: [
+            {
+                type: 'radar',
+                tooltip: {
+                    trigger: 'item'
+                },
+                itemStyle: {normal: {areaStyle: {type: 'default'}}},
+                data: [
+                    {
+                        value: [90, 80, 60, 50, 50],
+                        name: '连接'
+                    }
+                ]
+            },
+            {
+                type: 'radar',
+                radarIndex: 1,
+                itemStyle: {normal: {areaStyle: {type: 'default'}}},
+                data: [
+                    {
+                        name: '服务',
+                        value: [50, 90, 40, 40, 62],
+                    }
+                ]
+            }
+        ]
+    }), $(window).resize(function () {
+        t.resize()
+    })
+}
+
 function initGithubCharts() {
     var t = echarts.init($("#github-line-chart")[0]);
     t.setOption({
