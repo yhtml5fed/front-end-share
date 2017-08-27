@@ -2,6 +2,7 @@
 logs/*
 /**/node_modules/
 /**/bower_components/
+package-lock.json
 
 tmp
 .DS_Store
