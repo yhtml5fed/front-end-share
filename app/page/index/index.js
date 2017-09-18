@@ -9,9 +9,9 @@ $(function () {
     defaultEle.addClass('navbar-bg');
     $(document).ready(function () {
         drawCanvasOne();
-        setInterval(function () {
-            drawCanvasOne()
-        }, 4000);
+        // setInterval(function () {
+        //     drawCanvasOne()
+        // }, 4000);
         $('body').click(function () {
             drawCanvasOne()
         });

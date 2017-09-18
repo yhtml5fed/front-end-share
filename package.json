@@ -12,6 +12,7 @@
     "fis3-preprocessor-cssprefixer": "^0.0.2"
   },
   "scripts": {
-    "postinstall": "bower install"
+    "postinstall": "bower install",
+    "dev": "fis3 release -wl"
   }
 }
